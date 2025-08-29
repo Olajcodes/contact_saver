@@ -12,9 +12,9 @@ def save_participant(csv_file, participant_dict):
         if (f"{formatted_header}\n" not in line1):      #  This creates a new header if it hasn't previously existed
             f.writelines(f"{formatted_header}\n")       
 
-        for (key, value) in participant_dict.items():     # This iterates each item (key and value) in the dictionary of paerticipant details 
-            f.write(f"{value}, ")
-        f.write("\n")
+        for (key, value) in participant_dict.items():     # This iterates each item (key and value) in the dictionary of participant details 
+            f.write(f"{value}, ")       # This appends the content for the value
+        f.write("\n")               # This priints each kay and value in a new line
          
 
 
