@@ -1,16 +1,27 @@
 
+# Importing necessary packages
 import csv
+from pathlib import Path
+
+
+workspace = Path("workspace")
+workspace.mkdir(exist_ok= True)
+csv_file = workspace / "contacts.csv"
+
+
+headernames = ["Name", "Age", "  Phone Number", "Track"]
+
 #  Function to append participant details to a CSV file
-def load_participants(csv_file):
-    with open(csv_file, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        
-fieldnames = ["Name", "Age", "  Phone Number", "Track"]
 def save_participant(csv_file, participant_dict):
-    with open(csv_file, "a+", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(participant_dict)
 
+    # Checking if file exists
+    if csv_file.exists():
+        with open(csv_file, "r+", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=headernames)
+            writer.writerows(participant_dict)
 
-    return load_participants
+    else:
+         with open(csv_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=headernames)
+            writer.writeheader()
+            writer.writerows(participant_dict)
