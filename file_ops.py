@@ -1,3 +1,4 @@
+# Importing necessary packages
 import csv
 from pathlib import Path
 
@@ -12,7 +13,7 @@ headernames = ["Name", "Age", "  Phone Number", "Track"]
 #  Function to append participant details to a CSV file
 def save_participant(csv_file, participant_dict):
 
-    #Checking if file exist
+    # Checking if file exists
     if csv_file.exists():
         with open(csv_file, "r+", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=headernames)
